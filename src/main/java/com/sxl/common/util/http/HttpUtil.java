@@ -3,22 +3,14 @@ package com.sxl.common.util.http;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.net.URLConnection;
-import java.net.UnknownHostException;
 import java.util.List;
 import java.util.Map;
 
-import javax.net.ssl.SSLServerSocket;
-import javax.net.ssl.SSLServerSocketFactory;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
-
 public class HttpUtil {
 
-	private SSLSocket socket = null;
 
 	/**
 	 * 向指定URL发送GET方法的请求
@@ -128,96 +120,7 @@ public class HttpUtil {
 		return result;
 	}
 
-	public void connect() throws UnknownHostException, IOException {
-		// 通过套接字工厂，获取一个客户端套接字
-		SSLSocketFactory socketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
-		socket = (SSLSocket) socketFactory.createSocket("localhost", 7070);
-		try {
-			// 获取客户端套接字输出流
-			PrintWriter output = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
-			// 将用户名和密码通过输出流发送到服务器端
-			String userName = "principal";
-			output.println(userName);
-			String password = "credential";
-			output.println(password);
-			output.flush();
-
-			// 获取客户端套接字输入流
-			BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			// 从输入流中读取服务器端传送的数据内容，并打印出来
-			String response = input.readLine();
-			response += "\n " + input.readLine();
-			System.out.println(response);
-
-			// 关闭流资源和套接字资源
-			output.close();
-			input.close();
-			socket.close();
-		} catch (IOException ioException) {
-			ioException.printStackTrace();
-		} finally {
-			System.exit(0);
-		}
-	}
-	
-	
-	 // 服务器端授权的用户名和密码
-	 private static final String USER_NAME = "principal"; 
-	 private static final String PASSWORD = "credential"; 
-	 // 服务器端保密内容
-	 private static final String SECRET_CONTENT = 
-	"This is confidential content from server X, for your eye!"; 
-
-	 private SSLServerSocket serverSocket = null; 
-
-	
-	
 	
 
-	 public void runServer() throws IOException { 
-		 // 通过套接字工厂，获取一个服务器端套接字
-		 SSLServerSocketFactory socketFactory = (SSLServerSocketFactory) 
-	 SSLServerSocketFactory.getDefault(); 
-		 serverSocket = (SSLServerSocket)socketFactory.createServerSocket(7070); 
-		 while (true) { 
-			 try { 
-				 System.out.println("Waiting for connection..."); 
-				 // 服务器端套接字进入阻塞状态，等待来自客户端的连接请求
-				 SSLSocket socket = (SSLSocket) serverSocket.accept(); 
-				
-				 // 获取服务器端套接字输入流
-				 BufferedReader input = new BufferedReader( 
-				        new InputStreamReader(socket.getInputStream())); 
-			 // 从输入流中读取客户端用户名和密码
-				 String userName = input.readLine(); 
-				 String password = input.readLine(); 
-				
-				 // 获取服务器端套接字输出流
-				 PrintWriter output = new PrintWriter( 
-				        new OutputStreamWriter(socket.getOutputStream())); 
-
-			 // 对请求进行认证，如果通过则将保密内容发送给客户端
-				 if (userName.equals(USER_NAME) && password.equals(PASSWORD)) { 
-					 output.println("Welcome, " + userName); 
-					 output.println(SECRET_CONTENT); 
-				 } else { 
-					 output.println("Authentication failed, you have no	 access to server X..."); 
-				 } 
-			
-			 // 关闭流资源和套接字资源
-				 output.close(); 
-				 input.close(); 
-				 socket.close(); 
-
-			 } catch (IOException ioException) { 
-				 ioException.printStackTrace(); 
-			 } 
-		 } 
-	 } 
-public static void main(String[] args) throws IOException {
-	
-	 
-	
-}
 
 }
