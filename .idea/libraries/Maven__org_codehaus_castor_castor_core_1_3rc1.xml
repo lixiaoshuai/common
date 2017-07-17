@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.codehaus.castor:castor-core:1.3rc1">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/codehaus/castor/castor-core/1.3rc1/castor-core-1.3rc1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/codehaus/castor/castor-core/1.3rc1/castor-core-1.3rc1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/codehaus/castor/castor-core/1.3rc1/castor-core-1.3rc1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

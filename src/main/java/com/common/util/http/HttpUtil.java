@@ -11,6 +11,16 @@ import java.util.Map;
 
 public class HttpUtil {
 
+	/**
+	 * 'UTF-8' charset name
+	 */
+	private static final String CHARSET_UTF8 = "UTF-8";
+	/**
+	 * 'GBK' charset name
+	 */
+	private static final String CHARSET_GBK = "GBK";
+
+
 
 	/**
 	 * 向指定URL发送GET方法的请求

@@ -12,6 +12,9 @@
 	<properties>
 		<poi.version>3.15</poi.version>
 		<junit.version>4.11</junit.version>
+		<logback.version>1.1.2</logback.version>
+		<slft.version>1.7.21</slft.version>
+		<castor.version>1.3rc1</castor.version>
 	</properties>
 
 	<dependencies>
@@ -32,7 +35,7 @@
 		<dependency>
 			<groupId>org.codehaus.castor</groupId>
 			<artifactId>castor-xml</artifactId>
-			<version>1.3rc1</version>
+			<version>${castor.version}</version>
 		</dependency>
 		<!-- poi excel -->
 
@@ -89,11 +92,23 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.7.21</version>
+			<version>${slft.version}</version>
 		</dependency>
-
-
-
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${slft.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>${logback.version}</version>
+		</dependency>
 	</dependencies>
 
 
