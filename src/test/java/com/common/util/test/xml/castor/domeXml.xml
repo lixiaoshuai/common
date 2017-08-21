@@ -1,0 +1,14 @@
+<people age="23" id="12">
+	<name>张三</name>
+	<emp>
+		<address>heNa</address>
+		<list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xmlns:java="http://java.sun.com" xsi:type="java:java.lang.String">你好1</list>
+		<list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xmlns:java="http://java.sun.com" xsi:type="java:java.lang.String">你好2</list>
+		<duby>
+			<duby-age>3年</duby-age>
+			<duby>木工</duby>
+		</duby>
+	</emp>
+</people>
