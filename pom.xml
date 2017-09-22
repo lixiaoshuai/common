@@ -15,6 +15,7 @@
 		<logback.version>1.1.2</logback.version>
 		<slft.version>1.7.21</slft.version>
 		<castor.version>1.3rc1</castor.version>
+		<httpclient.version>4.3.6</httpclient.version>
 	</properties>
 
 	<dependencies>
@@ -108,6 +109,14 @@
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-core</artifactId>
 			<version>${logback.version}</version>
+		</dependency>
+
+
+
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
 		</dependency>
 	</dependencies>
 

@@ -62,7 +62,7 @@ public class Base64Util {
    
 	/**
 	 * Encode an array of bytes using Base64
-	 * @param data[] The bytes to be encoded
+	 * @param data [] The bytes to be encoded
 	 * @return A valid Base64 representation of the input
 	 */ 
 	public static String encode( byte data[] ) {
@@ -71,7 +71,7 @@ public class Base64Util {
   
 	/**
      * Encode an array of bytes using Base64
-     * @param data[] The bytes to be encoded
+     * @param data [] The bytes to be encoded
      * @return A valid Base64 representation of the input
      */ 
 	public String internalEncode( byte data[] ) {

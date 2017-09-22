@@ -1,5 +1,6 @@
 package com.common.util.http;
 
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -85,6 +86,7 @@ public class HttpUtil {
 			URLConnection conn = realUrl.openConnection();
 			// 设置通用的请求属性
 			conn.setRequestProperty("accept", "*/*");
+//			conn.setRequestProperty("Accept-Charset", "GBK");
 			conn.setRequestProperty("connection", "Keep-Alive");
 			conn.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
 			// 发送POST请求必须设置如下两行
@@ -97,7 +99,7 @@ public class HttpUtil {
 			// flush输出流的缓冲
 			out.flush();
 			// 定义BufferedReader输入流来读取URL的响应
-			in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			in = new BufferedReader(new InputStreamReader(conn.getInputStream(),"GBK"));
 			String line;
 			while ((line = in.readLine()) != null) {
 				result += line;
@@ -122,6 +124,17 @@ public class HttpUtil {
 		return result;
 	}
 
+
+
+	public static void main(String[] args) {
+		String xml = "<?xml version='1.0' encoding='GBK'?>\n" +
+				"<transaction><balance><balanceRequest><balanceRequestHeader><language>zh-cn</language><clientTime>2017-09-06T10:50:24</clientTime><batchID>20170906105024806001</batchID><transPatches>1</transPatches><logonPart/></balanceRequestHeader><balanceRequestBody><balanceRequestRecord><clientPatchID>20170906105024806001</clientPatchID><accountNo>35500188067819044</accountNo></balanceRequestRecord></balanceRequestBody></balanceRequest></balance></transaction>\n";
+
+		String url = "http://localhost:8000/wangshangyh/banktrans/balance_request.xml?usrID=2406754830&userPassword=123456";
+		String xmlb = sendPost(url,xml);
+		System.out.println(xmlb);
+
+	}
 	
 
 

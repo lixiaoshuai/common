@@ -44,8 +44,8 @@ public class Time {
 	/**
 	 * 将长时间格式字符串转换为时间 yyyy-MM-dd HH:mm:ss
 	 * 
-	 * @param strDate
-	 * @return
+	 * @param strDate	yyyyMMddHHmmss
+	 * @return	yyyy-MM-dd HH:mm:ss
 	 */
 	public static Date strToDateLong(String strDate) {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -128,6 +128,8 @@ public class Time {
 
 	/**
 	 * 得到现在小时
+	 *
+	 * @return   HH
 	 */
 	public static String getHour() {
 		Date currentTime = new Date();
@@ -141,7 +143,7 @@ public class Time {
 	/**
 	 * 得到现在分钟
 	 * 
-	 * @return
+	 * @return   mm
 	 */
 	public static String getTime() {
 		Date currentTime = new Date();

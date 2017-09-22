@@ -17,7 +17,7 @@ public class DESDemo3 {
 		//生成密钥
 		deskey = keygen.generateKey();
 		//生成Cipher对象，指定􀝊支持3DES算法
-		c = Cipher.getInstance("DESede");
+		c = Cipher.getInstance("DESede/ECB/PKCS5Padding");
 	}
 	public byte[] createEncrypt(String msg)throws Exception{
 		//根据密钥，对Cipher对象进行初始化,ENCRYPT_MODE表示加密模式
@@ -42,7 +42,7 @@ public class DESDemo3 {
 		System.out.println("明文是：" + msg);
 		byte[] enc = d.createEncrypt(msg);
 		System.out.println("密文是:" + new String(enc));
-		
+
 		byte[] dec = d.createDecrypt(enc);
 		System.out.println("解密后的结果是：" + new String(dec));
 		
