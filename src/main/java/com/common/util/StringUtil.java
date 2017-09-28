@@ -1137,5 +1137,17 @@ public class StringUtil {
             return str;
         }
     }
- 
+    /**
+     * 判断字符串是否为空
+     *
+     * @param str	待判断字符串
+     * @param flag	是否对空格进行trim true-trim后判断；false-直接判断
+     * @return boolean true-为空；false-非空
+     */
+    public static boolean isBlank(String str, boolean flag) {
+        if(flag)
+            return (str == null || str.trim().length() < 1);
+        else
+            return (str == null || str.length() < 1);
+    }
 }
