@@ -62,6 +62,8 @@ public class ByteUtil {
         }
         return ret;
     }
+
+
     /**
      *
      * @Description:  字符串转16进制字符串
@@ -69,7 +71,7 @@ public class ByteUtil {
      * @return 16进制字符串
      * @throws
      */
-    public static String string2HexString(String strPart) {
+    public static String stringToHexString(String strPart) {
         StringBuffer hexString = new StringBuffer();
         for (int i = 0; i < strPart.length(); i++) {
             int ch = (int) strPart.charAt(i);
