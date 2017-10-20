@@ -20,7 +20,6 @@ import javax.crypto.spec.SecretKeySpec;
 import com.common.util.bytes.ByteUtil;
 
 import com.common.util.base64.Base64Util;
-import com.sun.org.apache.xml.internal.security.algorithms.JCEMapper;
 import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

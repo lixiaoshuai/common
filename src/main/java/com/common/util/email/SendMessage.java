@@ -1,3 +1,4 @@
+/*
 package com.common.util.email;
 
 import com.common.util.PropertiesUtil;
@@ -35,3 +36,4 @@ public class SendMessage {
 		javaMailSenderImpl.send(simpleMailMessage);
 	}
 }
+*/
