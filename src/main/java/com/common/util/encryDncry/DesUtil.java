@@ -3,6 +3,7 @@ package com.common.util.encryDncry;
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 
 public class DesUtil {
 
@@ -13,6 +14,7 @@ public class DesUtil {
 	// Cipher负责完成加密或解密工作
 	private Cipher c;
 
+	private static final byte[] keybyte="bosigogo12345678bosigogo".getBytes(); //keybyte为加密密钥，长度为24字节
 
 	public void InitializeDes() throws Exception {
 		// 实例化支持DES算法的密钥生成器(算法名称命名需按规定，否则抛出异常)
@@ -22,11 +24,18 @@ public class DesUtil {
 		// 生成Cipher对象，指定其支持des算法
 		c = Cipher.getInstance("DES");
 	}
+	public void InitializeDes(byte[] key) throws Exception {
+		// 实例化支持DES算法的密钥生成器(算法名称命名需按规定，否则抛出异常)
 
+		// 生成密钥
+		deskey = new SecretKeySpec(key,"DESede");
+		// 生成Cipher对象，指定其支持des算法
+		c = Cipher.getInstance("DES");
+	}
 	public static void main(String[] args) throws Exception {
 		DesUtil d = new DesUtil();
-		d.InitializeDes();
-		String s = "我很好";
+		d.InitializeDes(keybyte);
+		String s = "HostName=hnuhub.azure-devices.cn;DeviceId=1000000164;SharedAccessKey=qknicCcJZXn2u4ZQtAXYrw==";
 		System.out.println(s);
 		// 加密
 		byte[] enc = d.createEncryptor(s);
