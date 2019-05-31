@@ -39,9 +39,9 @@ public class FileUtil {
 		File fp = new File(strPath, strFile);
 		try{
 			//判断文件是否存在被清空
-			if (strMode.equals("0")) 
+			if (strMode.equals("0")) {
 				fp.delete();
-
+			}
 			//判断路径是否存在,不存在创建
 			createPath(strPath);
 
@@ -62,22 +62,17 @@ public class FileUtil {
      */
     public static byte[] read(String pvFileName) throws IOException {
     	
-        if(pvFileName == null || pvFileName.trim().equals(""))
-            return null;
-
+        if(pvFileName == null || pvFileName.trim().equals("")) {
+			return null;
+		}
         //去掉文件名的前后空格，空格是非法的
         String lvFileName = pvFileName.trim();
 
         File lvFile = new File(lvFileName);
-
         byte[] lvBuffer = new byte[(int)(lvFile.length())];
-
         FileInputStream lvFIS= new FileInputStream(lvFile);
-
         lvFIS.read(lvBuffer);
-
         lvFIS.close();
-
         return lvBuffer;
     }
 
@@ -89,8 +84,9 @@ public class FileUtil {
 	public static int createPath(String strPath){
 		File fp = new File(strPath);
 		//判断路径是否存在,不存在创建
-		if (!fp.exists()) 
+		if (!fp.exists()) {
 			fp.mkdirs();
+		}
 		return 0;
 	}
 
@@ -102,8 +98,9 @@ public class FileUtil {
 	public static int deleteFile(String strPathFile){
 		File fp = new File(strPathFile);
 		//判断路径是否存在,存在删除
-		if (fp.exists()) 
+		if (fp.exists()) {
 			fp.delete();
+		}
 		return 0;
 	}
 
@@ -114,8 +111,9 @@ public class FileUtil {
 	 */
 	public static boolean isExists(String strPathFile){
 		File fp = new File(strPathFile);
-		if (fp.exists()) 
+		if (fp.exists()) {
 			return true;
+		}
 		return false;
 	}
 
@@ -168,14 +166,17 @@ public class FileUtil {
        try  {  
            int  bytesum  =  0;  
            int  byteread  =  0;  
-           File  oldfile  =  new  File(oldPath);  
-           if  (oldfile.exists())  {  //文件存在时  
-               InputStream  inStream  =  new  FileInputStream(oldPath);  //读入原文件  
+           File  oldfile  =  new  File(oldPath);
+		   //文件存在时
+           if  (oldfile.exists())  {
+			   //读入原文件
+               InputStream  inStream  =  new  FileInputStream(oldPath);
                @SuppressWarnings("resource")
 			FileOutputStream  fs  =  new  FileOutputStream(newPath);  
                byte[]  buffer  =  new  byte[1444];
-               while  (  (byteread  =  inStream.read(buffer))  !=  -1)  {  
-                   bytesum  +=  byteread;  //字节数  文件大小  
+               while  (  (byteread  =  inStream.read(buffer))  !=  -1)  {
+				   //字节数  文件大小
+                   bytesum  +=  byteread;
                    System.out.println(bytesum);  
                    fs.write(buffer,  0,  byteread);  
                }  
@@ -197,17 +198,18 @@ public class FileUtil {
    public static void makeExcelFile(String aFilePath, String aFileName, String aSheetName, String aFileDetail) throws Exception {
 
        File tPath = new File(aFilePath);
-       if (!tPath.exists())
-           tPath.mkdir();
+       if (!tPath.exists()) {
+		   tPath.mkdir();
+	   }
 
        String tFilePrefix = aFileName;
        String tFileSuffix = ".xls";
 
        String tFileName = tFilePrefix + tFileSuffix;
        String tPathFileName = aFilePath + tFileName;
-       if(logger.isDebugEnabled())
-    	   logger.debug("excel file path -["+tPathFileName+"]");
-
+       if(logger.isDebugEnabled()) {
+		   logger.debug("excel file path -[" + tPathFileName + "]");
+	   }
        try {
            //生成相应的 Excel 文档
            OutputStreamWriter tOutputStream = new OutputStreamWriter(new FileOutputStream(tPathFileName), "GBK");
@@ -251,31 +253,7 @@ public class FileUtil {
 	 * @return
 	 */
 	public static List<String> readTxtFile(File file){
-		List<String> resultList = new ArrayList<String>();
-		try {
-			String encoding = "UTF-8";
-			if (file.isFile() && file.exists()) { // 判断文件是否存在
-				InputStreamReader read = new InputStreamReader(
-						new FileInputStream(file), encoding);// 考虑到编码格式
-				BufferedReader bufferedReader = new BufferedReader(read);
-				//考虑到如果用记事本编辑UTF-8格式的TXT文件有可能出现BOM标记
-				String lineTxt = null;
-				while ((lineTxt = bufferedReader.readLine()) != null) {
-					resultList.add(lineTxt);
-				}
-				bufferedReader.close();
-			} else {
-				logger.error( "找不到指定的批量文件！");
-
-			}
-		}catch (IOException e){
-			logger.error( "找不到指定的批量文件！"+ e.getMessage());
-
-		}catch (Exception e) {
-			logger.error( "读取文件内容出现未知错误！"+ e.getMessage());
-
-		}
-		return resultList;
+		return readTxtFile(file,"UTF-8");
 	}
 	
 	/**
@@ -286,9 +264,10 @@ public class FileUtil {
 	public static List<String> readTxtFile(File file, String encoding){
 		List<String> resultList = new ArrayList<String>();
 		try {
-			if (file.isFile() && file.exists()) { // 判断文件是否存在
-				InputStreamReader read = new InputStreamReader(
-						new FileInputStream(file), encoding);// 考虑到编码格式
+			// 判断文件是否存在
+			if (file.isFile() && file.exists()) {
+				// 考虑到编码格式
+				InputStreamReader read = new InputStreamReader(new FileInputStream(file), encoding);
 				BufferedReader bufferedReader = new BufferedReader(read);
 				String lineTxt = null;
 				while ((lineTxt = bufferedReader.readLine()) != null) {
@@ -315,16 +294,4 @@ public class FileUtil {
 		return readTxtFile(new File(filePath));
 	}
 
-
-
-
-	
-	public static void main(String[] args) throws IOException {
-		File f = new File("C:\\a.txt");
-		List<String> fileContentList = new ArrayList<String>();
-		fileContentList.add("1");
-		fileContentList.add("2");
-		fileContentList.add("3");
-
-	}
 }

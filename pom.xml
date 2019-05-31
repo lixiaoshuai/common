@@ -10,6 +10,8 @@
 
     <name>common</name>
 	<properties>
+		<java.verions>1.8</java.verions>
+
 		<poi.version>3.15</poi.version>
 		<junit.version>4.11</junit.version>
 		<logback.version>1.1.2</logback.version>
@@ -118,11 +120,33 @@
 		</dependency>
 
 
-
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.49</version>
+		</dependency>
 		<dependency>
 			<groupId>commons-httpclient</groupId>
 			<artifactId>commons-httpclient</artifactId>
 			<version>3.1</version>
+		</dependency>
+
+		<!-- iot  -->
+		<dependency>
+			<groupId>com.aliyun</groupId>
+			<artifactId>aliyun-java-sdk-iot</artifactId>
+			<version>6.7.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.aliyun</groupId>
+			<artifactId>aliyun-java-sdk-core</artifactId>
+			<version>3.5.1</version>
+		</dependency>
+		<!-- sts -->
+		<dependency>
+			<groupId>com.aliyun</groupId>
+			<artifactId>aliyun-java-sdk-sts</artifactId>
+			<version>3.0.0</version>
 		</dependency>
 	</dependencies>
 
@@ -144,11 +168,15 @@
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
-	<description>util 工具类，以及一些常用的变量:
-
-1.	base64Util
-2.	byteUtil</description>
 </project>

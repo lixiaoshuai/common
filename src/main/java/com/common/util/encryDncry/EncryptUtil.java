@@ -17,9 +17,8 @@ import javax.crypto.spec.DESedeKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
 
-import com.common.util.bytes.ByteUtil;
-
 import com.common.util.base64.Base64Util;
+import com.common.util.bytes.ByteUtils;
 import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,7 +60,7 @@ public class EncryptUtil {
     public static String initKeyDES3() throws Exception {
         KeyGenerator keygen = KeyGenerator.getInstance(DES3_ALGORITHM);
         SecretKey deskey = keygen.generateKey();
-        return ByteUtil.byteArrayToHexStr(deskey.getEncoded());
+        return ByteUtils.byteArrayToHex(deskey.getEncoded());
     }
 
     /**
@@ -261,7 +260,7 @@ public class EncryptUtil {
      * @throws Exception
      */
     public static byte[] encryptDncryptUtil(byte[] msg, int cipher, String key, String algorithm) throws Exception {
-        SecretKey deskey = new SecretKeySpec(ByteUtil.hexStrToByteArray(key), algorithm);   //SecretKey负责保存对称密钥
+        SecretKey deskey = new SecretKeySpec(ByteUtils.hexToByteArray(key), algorithm);   //SecretKey负责保存对称密钥
         Cipher c = Cipher.getInstance(ALGORITHM);//Cipher负责完成加密或解密工作
         c.init(cipher, deskey); //根据密钥，对Cipher对象进行初始化,ENCRYPT_MODE表示加密模式
         byte[] dec = c.doFinal(msg);

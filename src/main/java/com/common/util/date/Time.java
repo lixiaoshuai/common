@@ -10,13 +10,21 @@ public class Time {
 	 * 
 	 * @return返回字符串格式 yyyy-MM-dd HH:mm:ss
 	 */
-	public static String getStringDate() {
-		Date currentTime = new Date();
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String dateString = formatter.format(currentTime);
+	public static String formatToEnDate() {
+		SimpleDateFormat formatter = new SimpleDateFormat(TimeConstants.DATE_TIME_PATTERN_EN);
+		String dateString = formatter.format(new Date());
 		return dateString;
 	}
-
+	/**
+	 * 获取现在时间
+	 *
+	 * @return返回字符串格式 yyyy-MM-dd HH:mm:ss
+	 */
+	public static String formatToChDate() {
+		SimpleDateFormat formatter = new SimpleDateFormat(TimeConstants.DATE_TIME_PATTERN_EN);
+		String dateString = formatter.format(new Date());
+		return dateString;
+	}
 	/**
 	 * 获取现在时间
 	 * 
@@ -502,7 +510,7 @@ public class Time {
 
 
  public static void main(String[] args) throws Exception {
-	 System.out.println(Time.getStringDate());
+
 	 System.out.println(Time.getStringDateShort());
 	 System.out.println(Time.getTime());
 	 System.out.println(Time.getTimeShort());

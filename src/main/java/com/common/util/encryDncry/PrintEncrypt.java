@@ -1,7 +1,7 @@
 package com.common.util.encryDncry;
 
 import com.common.annotation.AnnoEncrypt;
-import com.common.util.bytes.ByteUtil;
+import com.common.util.bytes.ByteUtils;
 import com.common.util.string.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,9 +54,9 @@ public class PrintEncrypt {
         }
         isEncrypt = LOG_ENCRYPT_FLAG?isEncrypt:false;
         if(isEncrypt) {
-            return ByteUtil.byteArrayToHexStr(EncryptUtil.DES3Decrypt(bytes));
+            return ByteUtils.byteArrayToHex(EncryptUtil.DES3Decrypt(bytes));
         } else {
-            return ByteUtil.byteArrayToHexStr(bytes);
+            return ByteUtils.byteArrayToHex(bytes);
         }
     }
 
@@ -85,7 +85,7 @@ public class PrintEncrypt {
         }
         isEncrypt = LOG_ENCRYPT_FLAG?isEncrypt:false;
         if(isEncrypt) {
-            return ByteUtil.byteArrayToHexStr(EncryptUtil.DES3Encrypt(origStr));
+            return ByteUtils.byteArrayToHex(EncryptUtil.DES3Encrypt(origStr));
         } else {
             return origStr;
         }

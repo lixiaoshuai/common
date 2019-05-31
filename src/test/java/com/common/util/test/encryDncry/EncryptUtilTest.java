@@ -1,7 +1,6 @@
 package com.common.util.test.encryDncry;
 
-import com.common.util.bytes.ByteUtil;
-import com.common.util.bytes.ByteUtil12;
+import com.common.util.bytes.ByteUtils;
 import com.common.util.encryDncry.EncryptUtil;
 import org.junit.Test;
 
@@ -30,7 +29,7 @@ public class EncryptUtilTest {
         String msg = "郭克华_安全编程技术";
         System.out.println("明文是：" + msg);
         byte[] enc = EncryptUtil.DES3Encrypt(msg);
-        System.out.println("密文是:" + ByteUtil.byteArrayToHexStr(enc));
+        System.out.println("密文是:" + ByteUtils.byteArrayToHex(enc));
 
         byte[] dec = EncryptUtil.DES3Decrypt(enc);
         System.out.println("解密后的结果是：" + new String(dec,"utf-8"));
@@ -44,7 +43,7 @@ public class EncryptUtilTest {
         String msg = "张三";
         System.out.println("明文是：" + msg);
         byte[] enc = EncryptUtil.DES3Encrypt(msg,key);
-        System.out.println("密文是:" + ByteUtil.byteArrayToHexStr(enc));
+        System.out.println("密文是:" + ByteUtils.byteArrayToHex(enc));
 
         byte[] dec = EncryptUtil.DES3Decrypt(enc,key);
         System.out.println("解密后的结果是：" + new String(dec));
