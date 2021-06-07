@@ -14,7 +14,7 @@
 
 		<poi.version>3.15</poi.version>
 		<junit.version>4.11</junit.version>
-		<logback.version>1.1.2</logback.version>
+		<logback.version>1.2.0</logback.version>
 		<slft.version>1.7.21</slft.version>
 		<castor.version>1.3rc1</castor.version>
 		<httpclient.version>4.3.6</httpclient.version>
